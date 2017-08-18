@@ -16,6 +16,16 @@
             android:layout_gravity="center_horizontal">
         </android.support.v7.widget.RecyclerView>
     </ScrollView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/api_fail"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:id="@+id/apiFailTV"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:padding="@dimen/text_margin"/>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"

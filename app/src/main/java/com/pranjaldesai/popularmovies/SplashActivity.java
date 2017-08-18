@@ -89,6 +89,8 @@ public class SplashActivity extends AppCompatActivity {
         protected void onPostExecute(String movieResults){
             if(movieResults!=null && !movieResults.equals("")){
                 setMovieJSONResult(movieResults);
+            }else {
+                setMovieJSONResult("");
             }
 
         }

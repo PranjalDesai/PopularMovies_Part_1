@@ -40,7 +40,7 @@ public class MovieFragment extends Fragment implements MovieAdaptor.GridItemClic
     private Activity activity;
     private SharedPreferences mPreferences;
     private BottomSheetBehavior mBottomSheetBehavior;
-    private TextView popularTextView, topRatedTextView;
+    private TextView popularTextView, topRatedTextView, apiFailTextView;
     private ImageView checkPopImg, checkTopImg;
 
     public MovieFragment() {
@@ -96,6 +96,7 @@ public class MovieFragment extends Fragment implements MovieAdaptor.GridItemClic
         checkTopImg= (ImageView) view.findViewById(R.id.topimg);
         popularTextView= (TextView) view.findViewById(R.id.popradio);
         topRatedTextView= (TextView) view.findViewById(R.id.topradio);
+        apiFailTextView= (TextView) view.findViewById(R.id.apiFailTV);
 
         mRecylerView = (RecyclerView) view.findViewById(R.id.rv_movie_view);
         GridLayoutManager gridLayoutManager= new GridLayoutManager(getContext(), 3);
@@ -118,6 +119,14 @@ public class MovieFragment extends Fragment implements MovieAdaptor.GridItemClic
         }
 
         mRecylerView.setAdapter(movieAdaptor);
+
+        if(popularImageURLString.isEmpty() && popularTitleString.isEmpty()
+                && topRatedTitleString.isEmpty() && topRatedImageURLString.isEmpty()){
+            apiFailTextView.setVisibility(View.VISIBLE);
+        }else{
+            apiFailTextView.setVisibility(View.GONE);
+        }
+
         View bottomSheet= view.findViewById(R.id.bottom_sheet);
         mBottomSheetBehavior= BottomSheetBehavior.from(bottomSheet);
         mBottomSheetBehavior.setPeekHeight(0);
